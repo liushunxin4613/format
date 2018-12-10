@@ -1,0 +1,56 @@
+buildscript {
+    repositories {
+        maven{url'http://maven.aliyun.com/nexus/content/groups/public/'}
+        maven { url "https://www.jitpack.io" }
+        jcenter(){url "http://jcenter.bintray.com/"}
+        jcenter()
+        google()
+        mavenLocal()
+        mavenCentral()
+        maven{url'https://plugins.gradle.org/m2/'}
+        maven{url"https://jitpack.io"}
+        maven{url'https://oss.sonatype.org/content/repositories/snapshots/'}
+        maven{url"http://maven.springframework.org/release"}
+        maven{url"http://maven.restlet.org"}
+        maven{url"http://mirrors.ibiblio.org/maven2"}
+        maven{url"http://repo.baichuan-android.taobao.com/content/groups/BaichuanRepositories/"}
+        maven{url'https://maven.fabric.io/public'}
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.1'
+    }
+}
+
+allprojects {
+    repositories {
+        maven{url'http://maven.aliyun.com/nexus/content/groups/public/'}
+        maven { url "https://www.jitpack.io" }
+        jcenter(){url "http://jcenter.bintray.com/"}
+        jcenter()
+        google()
+        mavenLocal()
+        mavenCentral()
+        maven{url'https://plugins.gradle.org/m2/'}
+        maven{url"https://jitpack.io"}
+        maven{url'https://oss.sonatype.org/content/repositories/snapshots/'}
+        maven{url"http://maven.springframework.org/release"}
+        maven{url"http://maven.restlet.org"}
+        maven{url"http://mirrors.ibiblio.org/maven2"}
+        maven{url"http://repo.baichuan-android.taobao.com/content/groups/BaichuanRepositories/"}
+        maven{url'https://maven.fabric.io/public'}
+    }
+    /*gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+        }
+    }*/
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xmaxerrs" << "500" // or whatever number you want
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
